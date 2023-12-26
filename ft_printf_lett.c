@@ -6,7 +6,7 @@
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 21:06:55 by kquispe           #+#    #+#             */
-/*   Updated: 2023/12/26 21:38:19 by kquispe          ###   ########.fr       */
+/*   Updated: 2023/12/26 22:38:06 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ void	ft_string(char *str)
 	int	i;
 
 	i = 0;
+	if (!str)
+	{
+		write(1, "(null)", 6);
+		return ;	
+	}
 	while (str[i])
 		ft_putchar(str[i++]);
 }
