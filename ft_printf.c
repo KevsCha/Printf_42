@@ -6,19 +6,18 @@
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 17:22:37 by kquispe           #+#    #+#             */
-/*   Updated: 2023/12/14 18:32:00 by kquispe          ###   ########.fr       */
+/*   Updated: 2023/12/26 21:10:28 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void cap(char c)
+void control_arg(char c, va_list print_s)
 {
-	printf("%c", c);
 	if (c == 'c')
-		printf("yes");
+		ft_putchar(va_arg(print_s, int));
 	else if (c == 's')
-		printf("yes");
+		ft_string(va_arg(print_s, char *));
 	else if (c == 'p')
 		printf("yes");
 	else if (c == 'd')
@@ -39,14 +38,17 @@ void cap(char c)
 
 int	ft_printf(char	const *str, ...)
 {
-	int	i;
-	//va_list newdate;
-
+	int		i;
+	va_list	prt;
+	
 	i = 0;
+	va_start(prt, str);
 	while (str[i])
 	{
 		if (str[i] == '%')
-			cap(str[i + 1]);
+			control_arg(str[++i], prt);
+		else
+			write(1, &(str[i]), 1);
 		i++;
 	}
 	return (0);

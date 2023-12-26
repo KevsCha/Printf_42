@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_lett.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/13 17:20:59 by kquispe           #+#    #+#             */
-/*   Updated: 2023/12/26 21:10:53 by kquispe          ###   ########.fr       */
+/*   Created: 2023/12/26 21:06:55 by kquispe           #+#    #+#             */
+/*   Updated: 2023/12/26 21:38:19 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <unistd.h>
-# include <stdio.h>
+void	ft_putchar(int c)
+{
+	write(1, &c, 1);
+}
 
-int	ft_printf(char	const *str, ...);
-void    ft_putchar(int c);
-void    ft_string(char *str);
+void	ft_string(char *str)
+{
+	int	i;
 
-#endif
+	i = 0;
+	while (str[i])
+		ft_putchar(str[i++]);
+}
+
+void	ft_printf_d(int dec)
+{
+	
+}
+
+void	ft_printf_i()
+{
+	
+}
