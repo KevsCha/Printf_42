@@ -6,11 +6,54 @@
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 21:06:55 by kquispe           #+#    #+#             */
-/*   Updated: 2023/12/27 22:02:00 by kquispe          ###   ########.fr       */
+/*   Updated: 2023/12/29 18:06:34 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static unsigned long ft_hexa_ptr(unsigned long mem, size_t len)
+{
+	int				res;
+	int				cont;
+	char			*ta_hexa;
+	char			*str;
+	
+	cont = 0;
+	ta_hexa = "0123456789abcdef";
+	str = (char *)ft_calloc(len + 1, sizeof(char));
+	if (!str)
+		return (cont);
+	while (mem / 16 != 0)
+	{
+		res = mem % 16;
+		str[--len] = ta_hexa[res];
+		mem /= 16;
+	}
+	str[0] = ta_hexa[mem % 16];
+	ft_string("0x");
+	ft_string(str);
+	cont = ft_strlen(str) + 2;
+	return (free(str), cont);
+}
+
+void	ft_printf_ptr(void *ptr)
+{
+	unsigned long	add_ptr;
+	unsigned long	temp;
+	unsigned long	len;
+	size_t			i;
+
+	i = 1;
+	add_ptr = (unsigned long)ptr;
+	temp = add_ptr;
+	while (temp / 16 != 0)
+	{
+		i++;
+		temp /= 16;
+	}
+	len = ft_hexa_ptr(add_ptr, i);
+}
 
 void	ft_putchar(int c)
 {
@@ -30,51 +73,27 @@ void	ft_string(char *str)
 	while (str[i])
 		ft_putchar(str[i++]);
 }
-unsigned long ft_hexa(unsigned long mem)
-{
-	int				i;
-	int				res;
-	unsigned long	aux;
-	char			*ta_hexa;
-	char			*str;
-	
-	i = 1;
-	ta_hexa = "0123456789abcdef";
-	aux = mem;
-	while (aux / 16 != 0)
-	{
-		i++;
-		aux /= 16;
-	}
-	str = (char *)ft_calloc((size_t)(i + 1), sizeof(char));
-	if (!str)
-		return (0);
-	while (mem / 16 != 0)
-	{
-		res = mem % 16;
-		str[--i] = ta_hexa[res];
-		mem /= 16;
-	}
-	str[0] = ta_hexa[mem % 16];
-	ft_string(str);
-	return (0);
-}
-void	ft_printf_ptr(void *ptr)
-{
-	unsigned long	add_ptr;
-	unsigned long	len;
-	int				i;
 
-	i = 0;
-	add_ptr = (unsigned long)ptr;
-	len = len_str(add_ptr);
-	printf("\n%lu__%lu__%p\n", len, add_ptr, ptr);
-	len = ft_hexa(add_ptr);
-	
-}
-/*
-void	ft_printf_i()
+void	ft_hexa(unsigned int num, char *bas)
 {
-	
+	unsigned int temp;
+	int	res;
+	int	i;
+
+	i = 1;
+	temp = num;
+	while (temp / 16 != 0)
+	{
+		i++;	
+		temp /= 16;
+	}
+	/*
+	while (num / 16 != 0)
+	{
+		res = num % 16;
+		ft_putchar(bas[res]);
+		num /= 16;
+	}
+	ft_putchar(bas[num % 16]);
+	*/
 }
-*/

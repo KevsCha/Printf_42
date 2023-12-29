@@ -6,7 +6,7 @@
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 17:22:37 by kquispe           #+#    #+#             */
-/*   Updated: 2023/12/27 20:01:56 by kquispe          ###   ########.fr       */
+/*   Updated: 2023/12/29 17:48:34 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,22 @@
 
 void ft_control_arg(char c, va_list print_s)
 {
-	void *d = "hola";
 	if (c == 'c')
 		ft_putchar(va_arg(print_s, int));
 	else if (c == 's')
 		ft_string(va_arg(print_s, char *));
 	else if (c == 'p')
 		ft_printf_ptr(va_arg(print_s, void *));
-	else if (c == 'd')
+	else if (c == 'd' || c == 'i')
 		ft_itoa(va_arg(print_s, int));
-	else if (c == 'i')
-		printf("yes");
 	else if (c == 'u')
-		printf("yes");
+		ft_uns_num(va_arg(print_s, unsigned int));
 	else if (c == 'x')
-		printf("yes");
+		ft_hexa(va_arg(print_s, unsigned int), "0123456789abcdef");
 	else if (c == 'X')
-		printf("yes");
+		ft_hexa(va_arg(print_s, unsigned int), "0123456789ABCDEF");
 	else if (c == '%')
-		printf("yes");
+		ft_putchar('%');
 	else
 		printf("ERROR");
 } 

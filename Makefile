@@ -6,16 +6,16 @@
 #    By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/14 13:17:55 by kquispe           #+#    #+#              #
-#    Updated: 2023/12/27 16:18:48 by kquispe          ###   ########.fr        #
+#    Updated: 2023/12/29 18:04:27 by kquispe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 PRINTFH = ft_printf.h
 
-CCFLAGS = -Wall -Wextra -Werror
+cCFLAGS = -Wall -Wextra -Werror
 
-SRC = ft_printf.c ft_printf_utils.c ft_printf_lett.c ft_itoa.c main.c
+SRC = ft_printf.c ft_printf_utils.c ft_printf_lett.c ft_itoa.c ft_uns_num.c main.c
 
 OBJ = $(SRC:.c=.o)
 
