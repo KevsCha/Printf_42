@@ -6,7 +6,7 @@
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 21:20:29 by kquispe           #+#    #+#             */
-/*   Updated: 2023/12/27 21:55:58 by kquispe          ###   ########.fr       */
+/*   Updated: 2024/01/03 14:02:15 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ size_t	ft_strlen(const char *str)
 		i++;
 	return (i);
 }
+
 void	*ft_calloc(size_t num, size_t bit)
 {
 	char	*arr;

@@ -6,7 +6,7 @@
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 12:58:51 by kquispe           #+#    #+#             */
-/*   Updated: 2023/12/29 17:04:36 by kquispe          ###   ########.fr       */
+/*   Updated: 2024/01/03 13:02:26 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_itoa(int n)
 
 	i = 0;
 	len = len_str(n);
-	str = (char *)malloc(len + 1 * sizeof(char));
+	str = (char *)ft_calloc(len + 1, sizeof(char));
 	if (!str)
 		return (0);
 	if (n < 0)
@@ -72,7 +72,6 @@ int	ft_itoa(int n)
 		str[i] = ft_char(n, i, len - 1);
 		i++;
 	}
-	str[i] = '\0';
 	ft_string(str);
 	return (free(str), (int)len);
 }
