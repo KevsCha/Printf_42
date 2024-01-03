@@ -6,7 +6,7 @@
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 21:06:55 by kquispe           #+#    #+#             */
-/*   Updated: 2023/12/29 18:06:34 by kquispe          ###   ########.fr       */
+/*   Updated: 2024/01/02 16:18:07 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	ft_printf_ptr(void *ptr)
 		i++;
 		temp /= 16;
 	}
+	ft_printf("%d\n", i);
 	len = ft_hexa_ptr(add_ptr, i);
 }
 
@@ -74,26 +75,30 @@ void	ft_string(char *str)
 		ft_putchar(str[i++]);
 }
 
-void	ft_hexa(unsigned int num, char *bas)
+void	ft_hexa(unsigned long num, char *bas)
 {
-	unsigned int temp;
-	int	res;
-	int	i;
+	unsigned long	temp;
+	size_t	i;
+	int				res;
+	char			*str;
 
 	i = 1;
 	temp = num;
 	while (temp / 16 != 0)
 	{
-		i++;	
+		i++;
 		temp /= 16;
 	}
-	/*
+	str = (char *)ft_calloc(i, sizeof(char));
+	if (!str)
+		return ;
 	while (num / 16 != 0)
 	{
-		res = num % 16;
-		ft_putchar(bas[res]);
+		str[--i] = bas[num % 16];
 		num /= 16;
 	}
-	ft_putchar(bas[num % 16]);
-	*/
+	str[0] = bas[num % 16];
+	printf("[letras en pantalla]%ld\n",ft_strlen(str));
+	ft_string(str);
+	free(str);
 }

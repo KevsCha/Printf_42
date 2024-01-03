@@ -6,7 +6,7 @@
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 17:05:54 by kquispe           #+#    #+#             */
-/*   Updated: 2023/12/29 17:33:15 by kquispe          ###   ########.fr       */
+/*   Updated: 2024/01/02 15:57:13 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static unsigned long	len_str(unsigned int n)
 	return (i);
 }
 
-void	ft_uns_num(unsigned int n)
+void	ft_uns_num(unsigned long n)
 {
 	char	*str;
 	size_t	len;

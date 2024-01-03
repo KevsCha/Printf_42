@@ -3,13 +3,14 @@
 int main(void)
 {
 	//unsigned int temp1 = 2147483648 + 2147483647;
-	int temp2 = 100;
+	int temp2 = 4366;
 
 	//printf("[original] %%u: %u %d\n", temp1, temp2);
 	//ft_printf("[copia] %%u %u %d\n", temp1, temp2);
 
-	//printf("[printf original] %x", temp2);
-	ft_printf("%x\n", temp2);
+	ft_printf("[mi printf copia]: %d\n", temp2);
+    //printf("[printf original] %p\n", &temp2);
+	printf("[printf original] %d\n", temp2);
 	return (0);
 }
 	/*
