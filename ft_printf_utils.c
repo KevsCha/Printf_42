@@ -6,13 +6,13 @@
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 21:20:29 by kquispe           #+#    #+#             */
-/*   Updated: 2024/01/03 14:02:15 by kquispe          ###   ########.fr       */
+/*   Updated: 2024/01/03 16:16:20 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_strlen(const char *str)
+size_t	ft_strlen(char *str)
 {
 	int	i;
 

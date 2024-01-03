@@ -6,13 +6,13 @@
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 21:06:55 by kquispe           #+#    #+#             */
-/*   Updated: 2024/01/03 15:40:25 by kquispe          ###   ########.fr       */
+/*   Updated: 2024/01/03 16:24:26 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static unsigned long	ft_hexa_ptr(unsigned long mem, size_t len)
+static int	ft_hexa_ptr(unsigned long mem, size_t len)
 {
 	int				res;
 	int				cont;
@@ -32,7 +32,8 @@ static unsigned long	ft_hexa_ptr(unsigned long mem, size_t len)
 	}
 	str[0] = ta_hexa[mem % 16];
 	ft_string("0x");
-	ft_string(str);
+	if (ft_string(str) == -1)
+		return (free(str), -1);
 	cont = ft_strlen(str) + 2;
 	return (free(str), cont);
 }
@@ -41,7 +42,7 @@ int	ft_printf_ptr(void *ptr)
 {
 	unsigned long	add_ptr;
 	unsigned long	temp;
-	unsigned long	len;
+	int				len;
 	size_t			i;
 
 	i = 1;
@@ -53,27 +54,36 @@ int	ft_printf_ptr(void *ptr)
 		temp /= 16;
 	}
 	len = ft_hexa_ptr(add_ptr, i);
-	return (len);
+	if (len == -1)
+		return (-1);
+	return ((int)len);
 }
 
 int	ft_putchar(int c)
 {
-	write(1, &c, 1);
+	if (write(1, &c, 1) == -1)
+		return (-1);
 	return (1);
 }
 
 int	ft_string(char *str)
 {
 	int	i;
+	int	control;
 
 	i = 0;
+	control = 0;
 	if (!str)
 	{
 		write(1, "(null)", 6);
 		return (6);
 	}
 	while (str[i])
-		ft_putchar(str[i++]);
+	{
+		control = ft_putchar(str[i++]);
+		if (control == -1)
+			return (-1);
+	}
 	return (ft_strlen(str));
 }
 
@@ -85,7 +95,6 @@ int	ft_hexa(unsigned int num, char *bas)
 	int				cont;
 
 	i = 1;
-	cont = 0;
 	temp = num;
 	while (temp / 16 != 0)
 	{
@@ -101,7 +110,8 @@ int	ft_hexa(unsigned int num, char *bas)
 		num /= 16;
 	}
 	str[0] = bas[num % 16];
-	ft_string(str);
+	if (ft_string(str) == -1)
+		return (free(str), -1);
 	cont = ft_strlen(str);
 	return (free(str), cont);
 }
