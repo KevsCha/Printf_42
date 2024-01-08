@@ -6,7 +6,7 @@
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 14:02:30 by kquispe           #+#    #+#             */
-/*   Updated: 2024/01/03 16:12:52 by kquispe          ###   ########.fr       */
+/*   Updated: 2024/01/08 14:54:24 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int main(void)
 	//printf("lett cont copia: %d\n", ft_printf("\001\002\007\v\010\f\r\n"));
     //printf("[printf original] %p\n", &temp2);
 	//printf("lett cont original: %d", printf("\001\002\007\v\010\f\r\n"));
-
 	//printf("%d", printf("%s", (char *)NULL));
-	printf("%d", (int)write(1, "", 1));
+	printf("\n%d\n", ft_printf("%p", ""));
+	printf("%p", "");
 	return (0);
 }

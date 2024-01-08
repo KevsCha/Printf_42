@@ -6,7 +6,7 @@
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 17:22:37 by kquispe           #+#    #+#             */
-/*   Updated: 2024/01/03 15:56:05 by kquispe          ###   ########.fr       */
+/*   Updated: 2024/01/08 13:05:07 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ int	ft_printf(char	const *str, ...)
 			cont += ft_putchar(str[i]);
 		i++;
 		if (cont == -1)
-			return (-1);
+			break ;
 	}
+	va_end(prt);
 	return (cont);
 }

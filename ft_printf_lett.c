@@ -6,21 +6,19 @@
 /*   By: kquispe <kquispe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 21:06:55 by kquispe           #+#    #+#             */
-/*   Updated: 2024/01/03 16:24:26 by kquispe          ###   ########.fr       */
+/*   Updated: 2024/01/08 15:02:57 by kquispe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_hexa_ptr(unsigned long mem, size_t len)
+static int	ft_hexa_ptr(unsigned long mem, size_t len, char *ta_hexa)
 {
 	int				res;
 	int				cont;
-	char			*ta_hexa;
 	char			*str;
 
 	cont = 0;
-	ta_hexa = "0123456789abcdef";
 	str = (char *)ft_calloc(len + 1, sizeof(char));
 	if (!str)
 		return (-1);
@@ -53,15 +51,15 @@ int	ft_printf_ptr(void *ptr)
 		i++;
 		temp /= 16;
 	}
-	len = ft_hexa_ptr(add_ptr, i);
-	if (len == -1)
+	len = ft_hexa_ptr(add_ptr, i, "0123456789abcdef");
+	if (len < 0)
 		return (-1);
-	return ((int)len);
+	return (len);
 }
 
 int	ft_putchar(int c)
 {
-	if (write(1, &c, 1) == -1)
+	if (write(1, &c, 1) < 0)
 		return (-1);
 	return (1);
 }
@@ -74,14 +72,11 @@ int	ft_string(char *str)
 	i = 0;
 	control = 0;
 	if (!str)
-	{
-		write(1, "(null)", 6);
-		return (6);
-	}
+		return (ft_string("(null)"));
 	while (str[i])
 	{
 		control = ft_putchar(str[i++]);
-		if (control == -1)
+		if (control < 0)
 			return (-1);
 	}
 	return (ft_strlen(str));
@@ -110,7 +105,7 @@ int	ft_hexa(unsigned int num, char *bas)
 		num /= 16;
 	}
 	str[0] = bas[num % 16];
-	if (ft_string(str) == -1)
+	if (ft_string(str) < 0)
 		return (free(str), -1);
 	cont = ft_strlen(str);
 	return (free(str), cont);
